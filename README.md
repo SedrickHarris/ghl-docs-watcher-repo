@@ -76,6 +76,33 @@ that downstream tools (a Claude project, alerting, etc.) can consume.
 4. Live fetching is disabled. Implement `fetch_page()` deliberately, with
    review, before enabling any watched page.
 
+## Watched-source expansion strategy
+
+This repo does **not** attempt to watch every HighLevel URL. The watch list
+in `config/watched-pages.json` is built up in deliberate phases:
+
+- **Phase 1 (critical):** the official source *roots* (API docs, Help Center,
+  changelog) plus the high-impact product surfaces — workflows, AI agents,
+  calendars, conversations, phone, messaging, email, forms, knowledge bases,
+  MCP Server.
+- **Phase 2 (expansion):** broader surfaces — contacts, opportunities, sites,
+  payments, settings, reporting, integrations, reputation, custom objects,
+  marketplace, SaaS / agency tooling, memberships, e-commerce, and others.
+
+Both phases follow the same rules:
+
+- Every source starts with `enabled: false` and `verify_before_enabling: true`.
+- A source is only enabled after a human has confirmed the URL is official,
+  current, and the right level of granularity for diffing.
+- **Section-level watching first, article-level later.** The watch list
+  targets section landing pages (or, where the section URL isn't yet known,
+  the relevant domain root). Article-level watching is a later phase, gated
+  on the fetcher being implemented and on a section showing signal worth
+  drilling into.
+- **Live fetching remains disabled.** No scripts and no GitHub Actions are
+  modified in this phase. The watch list is configuration only; the fetcher
+  is implemented in a separate, reviewed phase.
+
 ## Next steps (suggested, not done yet)
 
 - Confirm the exact HighLevel sources to watch and add them to

@@ -49,3 +49,69 @@ do real work.
 2. Confirm the URL is official and stable.
 3. Set `enabled: true`.
 4. Run the pipeline once manually to seed a baseline snapshot.
+
+## 7. Phase 2: Watched-source expansion
+
+Phase 2 broadens `config/watched-pages.json` from the two example entries
+to the full set of HighLevel product surfaces we expect to track over
+time. No code, scripts, or CI workflows are touched in this phase — only
+the configuration and supporting documentation.
+
+### How sources are grouped
+
+- **`phase: "1-critical"`** — official source roots and the high-impact
+  product surfaces (workflows, AI agents, calendars, conversations, phone,
+  messaging, email, forms, knowledge bases, MCP). These get verified and
+  enabled first.
+- **`phase: "2-expansion"`** — broader surfaces (CRM, sites, payments,
+  reporting, integrations, SaaS / agency tooling, marketplace, etc.).
+- **`surfaces: [...]`** on each entry tags the high-level product areas
+  the source feeds into (e.g. `workflows`, `ai-agents`, `crm`). This is
+  the field downstream tooling uses to route diffs into the right
+  surface-specific implication doc.
+
+### Why section-level before article-level
+
+- Section landing pages are stable; individual article URLs change more
+  often and proliferate fast — a watch list of articles becomes stale
+  faster than it provides value.
+- A section-level diff is a useful early-warning signal: when a section's
+  table of contents changes, it points the human reviewer at *which*
+  article to drill into next.
+- Article-level URLs cannot be enumerated reliably without fetching, and
+  live fetching is disabled in this phase. Section-level entries let us
+  populate the watch list now without violating the no-fetch rule.
+  Specific URLs are refined during the verification step.
+
+### How to verify a URL
+
+For each entry with `verify_before_enabling: true`:
+
+1. Open the `url` in a browser.
+2. Confirm the domain is an official HighLevel domain
+   (`gohighlevel.com`, `highlevel.stoplight.io`). No third-party mirrors,
+   no community sites.
+3. Confirm the page is the intended *section* landing page, not the site
+   root and not an individual article. Update the `url` to the more
+   specific section URL when one exists.
+4. Confirm the page renders meaningful content (not a 404, a login wall,
+   or a redirect to a different surface).
+5. Decide on a `content_selector` if a section's wrapper page contains
+   a lot of navigation churn. `null` is fine for sources where whole-page
+   diffing is acceptable.
+6. Record the verifier as `owner` (GitHub username).
+
+### Rules before setting `enabled: true`
+
+- The URL has been verified per the steps above.
+- `verify_before_enabling` is flipped to `false`.
+- The fetcher implementation supports the source's `expected_content_type`.
+- A baseline snapshot has been captured (see section 6).
+
+### Why no fetcher scripts change in this phase
+
+Phase 2 is configuration only. Implementing real fetching, diffing, and
+write-back is a separate, reviewed phase. Keeping these phases apart lets
+the watch list be reviewed on its own merits — URLs, granularity,
+ownership — without entangling that review with code changes that would
+also need their own safety review.
