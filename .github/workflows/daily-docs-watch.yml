@@ -1,8 +1,15 @@
 name: Daily Docs Watch
 
-# Skeleton workflow. The pipeline scripts are stubs — they will run in
-# --dry-run mode and perform no network requests. Wire real fetching only
-# after the scripts have been implemented and reviewed.
+# Skeleton workflow. The pipeline scripts are stubs — they run only in
+# --dry-run mode and perform no network requests. This workflow does
+# NOT fetch live HighLevel pages, does NOT write back to the repo, and
+# does NOT consume any secrets.
+#
+# Before flipping any of that on:
+#   1. Implement scripts/fetch_ghl_docs.py, parse_and_diff.py, write_updates.py.
+#   2. Decide snapshot persistence (commit-back vs. artifact upload).
+#   3. Promote permissions to contents: write only if commit-back is chosen.
+#   4. Remove --dry-run from the step that should perform real work.
 
 on:
   schedule:
@@ -12,9 +19,14 @@ on:
 permissions:
   contents: read
 
+concurrency:
+  group: daily-docs-watch
+  cancel-in-progress: false
+
 jobs:
   watch:
     runs-on: ubuntu-latest
+    timeout-minutes: 10
     steps:
       - name: Checkout
         uses: actions/checkout@v4

@@ -1,24 +1,45 @@
 {
-  "version": 1,
-  "_notes": "Starter scaffold. Every entry below is a placeholder. Verify each URL is current, official, and the correct level of granularity (page vs. site root) before setting enabled to true. Only official HighLevel domains belong here.",
+  "version": 2,
+  "_notes": "Starter scaffold. Every entry below is a placeholder and is intentionally disabled. Verify each URL is current, official, and the correct level of granularity before setting enabled to true. Only official HighLevel domains belong here. Live fetching is disabled at the repo level until the script stubs are implemented and reviewed.",
+  "schema": {
+    "id": "Stable kebab-case identifier. Required.",
+    "label": "Human-readable description. Required.",
+    "url": "Official HighLevel URL. Required.",
+    "source_type": "One of: api_docs | help_center | changelog | marketplace | developer_portal | other. Required.",
+    "expected_content_type": "One of: html | json | openapi | markdown. Required. Drives how the parser should diff this source.",
+    "priority": "One of: high | medium | low. Required. Drives downstream alerting and review urgency.",
+    "enabled": "Boolean. Set to true only after URL has been verified and the fetcher is implemented.",
+    "verify_before_enabling": "Boolean. Keep true until the URL has been confirmed current, official, and granular enough.",
+    "content_selector": "CSS or XPath selector that isolates the meaningful content (drops nav/footer/sidebar). Null is allowed for structured sources (json/openapi) or when the whole page should be diffed.",
+    "owner": "GitHub username responsible for reviewing changes from this source. Null is allowed during scaffolding.",
+    "notes": "Free-form context. Optional."
+  },
   "pages": [
     {
       "id": "ghl-api-docs-root",
       "label": "HighLevel API Documentation (Stoplight) — root",
       "url": "https://highlevel.stoplight.io/",
       "source_type": "api_docs",
+      "expected_content_type": "html",
+      "priority": "high",
       "enabled": false,
       "verify_before_enabling": true,
-      "notes": "Root of HighLevel public API documentation. In production, prefer specific sub-pages (e.g., per resource) over the root."
+      "content_selector": null,
+      "owner": null,
+      "notes": "Root of HighLevel public API documentation. In production, prefer specific per-resource pages and watch the OpenAPI spec (JSON) where available — structured diffing is far more reliable than HTML diffing."
     },
     {
       "id": "ghl-help-center-root",
       "label": "HighLevel Help Center — root",
       "url": "https://help.gohighlevel.com/",
       "source_type": "help_center",
+      "expected_content_type": "html",
+      "priority": "medium",
       "enabled": false,
       "verify_before_enabling": true,
-      "notes": "Root of HighLevel public help center. In production, list specific article URLs."
+      "content_selector": null,
+      "owner": null,
+      "notes": "Root of HighLevel public help center. In production, list specific article URLs and add a content_selector targeting the article body to filter out navigation churn."
     }
   ]
 }

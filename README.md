@@ -6,6 +6,26 @@ Starter scaffold for a HighLevel (GoHighLevel / GHL) documentation watcher.
 > Verify every URL in `config/watched-pages.json` against an official HighLevel
 > source before enabling any watcher.
 
+## Current readiness status
+
+- **Repo initialized.** Directory layout, templates, and the Claude
+  Project instruction prompt are in place.
+- **Scripts are stubs.** `scripts/fetch_ghl_docs.py`,
+  `scripts/parse_and_diff.py`, and `scripts/write_updates.py` are safe
+  skeletons; they raise `NotImplementedError` for any real work and
+  only support `--dry-run`.
+- **Sources are disabled.** Every entry in `config/watched-pages.json`
+  has `enabled: false` and `verify_before_enabling: true`. No URL has
+  been confirmed as the correct watch target yet.
+- **Claude Project connection allowed.** After this readiness patch,
+  the repo can be wired into a Claude Project as source-of-truth. The
+  Project will see uploaded files only — there is no live watcher data
+  to consume yet, so analyses will be limited to whatever diffs or
+  snapshots a user pastes in manually.
+- **Live watcher implementation comes later.** Implementing real
+  fetching, diffing, and write-back is an explicit, reviewed next step
+  — not part of this readiness patch.
+
 ## What this repo is for
 
 Track changes to official HighLevel documentation over time, classify the
