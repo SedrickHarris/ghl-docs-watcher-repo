@@ -103,6 +103,17 @@ Both phases follow the same rules:
   modified in this phase. The watch list is configuration only; the fetcher
   is implemented in a separate, reviewed phase.
 
+## Source verification tracker
+
+The watch list in `config/watched-pages.json` contains **52 configured
+sources** across Phase 1 (critical) and Phase 2 (expansion). Every source
+must be verified before it can be enabled — see the per-source rules
+under [Watched-source expansion strategy](#watched-source-expansion-strategy).
+
+Verification progress is tracked at
+[`docs/source-verification-tracker.md`](docs/source-verification-tracker.md),
+one row per source.
+
 ## Next steps (suggested, not done yet)
 
 - Confirm the exact HighLevel sources to watch and add them to
