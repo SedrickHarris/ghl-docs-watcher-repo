@@ -311,9 +311,10 @@ Messaging content, distinct from any Toll-Free verification surface.
 - **Current URL (from config):** `https://help.gohighlevel.com/`
 - **Candidate URL or title:** A List of Workflow Actions
 - **Candidate status:** Needs exact URL
-- **Owner:** Unassigned
-- **Status:** Not started
-- **Verified URL:** *(paste here after browser verification — leave blank if status ends up Needs URL refinement or Deferred)*
+- **Owner:** Sedrick Harris
+- **Status:** Verified
+- **Verified URL:** https://help.gohighlevel.com/support/solutions/articles/155000005552-how-to-access-the-all-in-one-dashboard-for-email-marketing
+- **Verification record:** Primary is the All-in-One Email Dashboard article (access & reports landing). Supporting URL: `https://help.gohighlevel.com/support/solutions/articles/155000002472-workflow-action-send-email` (Workflow Action - Send Email reference). Both resolve on `help.gohighlevel.com` and are publicly accessible without login.
 
 ### Browser verification steps
 
@@ -704,9 +705,10 @@ Conversations (the inbox view) and Messaging (SMS channel).
 - **Current URL (from config):** `https://help.gohighlevel.com/`
 - **Candidate URL or title:** AI Tools in HighLevel
 - **Candidate status:** Needs exact URL
-- **Owner:** Unassigned
-- **Status:** Not started
-- **Verified URL:** *(paste here after browser verification — leave blank if status ends up Needs URL refinement or Deferred)*
+- **Owner:** Sedrick Harris
+- **Status:** Verified
+- **Verified URL:** https://help.gohighlevel.com/support/solutions/articles/155000003906-ai-employee-overview
+- **Verification record:** Primary is the AI Employee overview article (slug literally `ai-employee-overview`; covers Automate Calls, Chats & Workflows). Supporting URL: `https://help.gohighlevel.com/support/solutions/articles/155000002166-ai-tools-in-highlevel` (AI Tools in HighLevel umbrella article — the original Batch 02 candidate). Both resolve on `help.gohighlevel.com` and are publicly accessible without login.
 
 ### Browser verification steps
 
