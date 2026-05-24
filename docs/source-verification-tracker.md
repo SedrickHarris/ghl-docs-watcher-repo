@@ -37,9 +37,9 @@ per source.
 
 | Phase | Source ID | Label | Current URL | Target section to verify | Surface | Priority | Verified URL | Owner | Verification status | Notes |
 |---|---|---|---|---|---|---|---|---|---|---|
-| 1-critical | ghl-api-docs-root | HighLevel API Documentation (Stoplight) — root | https://highlevel.stoplight.io/ | Stoplight root index | api, general | high |  | Unassigned | Not started |  |
-| 1-critical | ghl-help-center-root | HighLevel Help Center — root | https://help.gohighlevel.com/ | Help center root index | general | high |  | Unassigned | Not started |  |
-| 1-critical | ghl-platform-updates | HighLevel Platform Updates / What's Changed | https://help.gohighlevel.com/ | Platform changelog / What's Changed | general | high |  | Unassigned | Not started |  |
+| 1-critical | ghl-api-docs-root | HighLevel API Documentation (Stoplight) — root | https://highlevel.stoplight.io/ | Stoplight root index | api, general | high | https://marketplace.gohighlevel.com/docs/ | Sedrick Harris | Verified | Verified official HighLevel API Documentation / Developer Portal URL. |
+| 1-critical | ghl-help-center-root | HighLevel Help Center — root | https://help.gohighlevel.com/ | Help center root index | general | high | https://help.gohighlevel.com/support/solutions | Sedrick Harris | Verified | Verified official HighLevel Support Portal knowledge base root. |
+| 1-critical | ghl-platform-updates | HighLevel Platform Updates / What's Changed | https://help.gohighlevel.com/ | Platform changelog / What's Changed | general | high | https://ideas.gohighlevel.com/changelog | Sedrick Harris | Verified | Verified official HighLevel public changelog URL for platform updates. |
 | 1-critical | ghl-workflows | HighLevel Help Center — Workflows | https://help.gohighlevel.com/ | Workflows section landing page | workflows | high |  | Unassigned | Not started |  |
 | 1-critical | ghl-workflow-builder | HighLevel Help Center — Workflow Builder | https://help.gohighlevel.com/ | Workflow Builder section landing page | workflows | high |  | Unassigned | Not started |  |
 | 1-critical | ghl-workflow-triggers | HighLevel Help Center — Workflow Triggers | https://help.gohighlevel.com/ | Workflow Triggers section landing page | workflows | high |  | Unassigned | Not started |  |
