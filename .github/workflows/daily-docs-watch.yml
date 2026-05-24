@@ -1,0 +1,34 @@
+name: Daily Docs Watch
+
+# Skeleton workflow. The pipeline scripts are stubs — they will run in
+# --dry-run mode and perform no network requests. Wire real fetching only
+# after the scripts have been implemented and reviewed.
+
+on:
+  schedule:
+    - cron: "0 13 * * *"   # 13:00 UTC daily
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  watch:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Fetch docs (skeleton — no live fetch)
+        run: python scripts/fetch_ghl_docs.py --dry-run
+
+      - name: Parse and diff (skeleton)
+        run: python scripts/parse_and_diff.py --dry-run
+
+      - name: Write updates (skeleton)
+        run: python scripts/write_updates.py --dry-run

@@ -1,0 +1,24 @@
+{
+  "version": 1,
+  "_notes": "Starter scaffold. Every entry below is a placeholder. Verify each URL is current, official, and the correct level of granularity (page vs. site root) before setting enabled to true. Only official HighLevel domains belong here.",
+  "pages": [
+    {
+      "id": "ghl-api-docs-root",
+      "label": "HighLevel API Documentation (Stoplight) — root",
+      "url": "https://highlevel.stoplight.io/",
+      "source_type": "api_docs",
+      "enabled": false,
+      "verify_before_enabling": true,
+      "notes": "Root of HighLevel public API documentation. In production, prefer specific sub-pages (e.g., per resource) over the root."
+    },
+    {
+      "id": "ghl-help-center-root",
+      "label": "HighLevel Help Center — root",
+      "url": "https://help.gohighlevel.com/",
+      "source_type": "help_center",
+      "enabled": false,
+      "verify_before_enabling": true,
+      "notes": "Root of HighLevel public help center. In production, list specific article URLs."
+    }
+  ]
+}
